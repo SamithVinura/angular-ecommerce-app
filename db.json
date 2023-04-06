@@ -1,0 +1,28 @@
+{
+  "seller": [
+    {
+      "name": "samith vinura",
+      "email": "samithvinurakck119@gmail.com",
+      "password": "123456",
+      "id": 1
+    },
+    {
+      "name": "ss",
+      "password": "dsd",
+      "email": "dsds",
+      "id": 2
+    },
+    {
+      "name": "ss",
+      "password": "dsd",
+      "email": "dsds",
+      "id": 3
+    },
+    {
+      "name": "ss",
+      "password": "dsd",
+      "email": "dsds",
+      "id": 4
+    }
+  ]
+}
