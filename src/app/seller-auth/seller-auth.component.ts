@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class SellerAuthComponent {
 
+  constructor(){}
+
+  signup(data:object):void{
+    console.log(data)
+  }
 }
