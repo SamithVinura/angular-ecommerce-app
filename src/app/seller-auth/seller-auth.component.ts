@@ -9,6 +9,7 @@ import { signUp } from '../data-type';
   styleUrls: ['./seller-auth.component.css']
 })
 export class SellerAuthComponent {
+  showLogin:boolean =true
 
   constructor(private sellerService:SellerService){
     this.sellerService.reloadSeller()
@@ -16,5 +17,12 @@ export class SellerAuthComponent {
 
   signup(data:signUp):void{
     this.sellerService.userSignUp(data)
+  }
+
+  openLogin(){
+    this.showLogin=true
+  }
+  openSignUp(){
+    this.showLogin=false
   }
 }
