@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { SellerService } from '../services/seller.service';
 import { signUp } from '../data-type';
-import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-seller-auth',
@@ -10,7 +10,9 @@ import { Router } from '@angular/router';
 })
 export class SellerAuthComponent {
 
-  constructor(private sellerService:SellerService,private router:Router){}
+  constructor(private sellerService:SellerService){
+    this.sellerService.reloadSeller()
+  }
 
   signup(data:signUp):void{
     this.sellerService.userSignUp(data)

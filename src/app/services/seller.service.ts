@@ -17,8 +17,16 @@ export class SellerService {
       console.log(res)
       if(res){
         this.isSellerLoggedIn.next(true)
+        localStorage.setItem('seller',JSON.stringify(res.body))
         this.router.navigate(['seller-home'])
       }
     })
+  }
+
+  reloadSeller(){
+    if(localStorage.getItem('seller')){
+      this.isSellerLoggedIn.next(true)
+      this.router.navigate(['seller-home'])
+    }
   }
 }
