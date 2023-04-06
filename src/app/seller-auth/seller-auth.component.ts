@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { SellerService } from '../services/seller.service';
-import { signUp } from '../data-type';
+import { login, signUp } from '../data-type';
 
 
 @Component({
@@ -10,6 +10,7 @@ import { signUp } from '../data-type';
 })
 export class SellerAuthComponent {
   showLogin:boolean =true
+  authError!:string
 
   constructor(private sellerService:SellerService){
     this.sellerService.reloadSeller()
@@ -17,6 +18,14 @@ export class SellerAuthComponent {
 
   signup(data:signUp):void{
     this.sellerService.userSignUp(data)
+  }
+  login(data:login):void{
+    this.sellerService.userLogin(data)
+    this.sellerService.isLoginError.asObservable().subscribe((error)=>{
+      if(error){
+        this.authError="Email Password is invalid"
+      }
+    })
   }
 
   openLogin(){
