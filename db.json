@@ -36,5 +36,43 @@
       "email": "samithvinurakck119@gmail.com",
       "id": 6
     }
+  ],
+  "products": [
+    {
+      "name": "Samsung m 40 a ",
+      "price": "550",
+      "category": "mobile",
+      "color": "white",
+      "description": "this is a Samsung product",
+      "image": "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcSOO1JDPUNwcPiqzHYhaL_zpJA0Ymlr6mD9sSgTPad_JYdrk-o",
+      "id": 1
+    },
+    {
+      "name": "sasasa",
+      "price": "sasa",
+      "category": "sasa",
+      "color": "sasa",
+      "description": "sasa",
+      "image": "sasa",
+      "id": 2
+    },
+    {
+      "name": "bvb",
+      "price": "bvbv",
+      "category": "bvbv",
+      "color": "bvbv",
+      "description": "bvbv",
+      "image": "bvb",
+      "id": 3
+    },
+    {
+      "name": "dsds",
+      "price": "dsds",
+      "category": "dsd",
+      "color": "dsd",
+      "description": "ds",
+      "image": "dsd",
+      "id": 4
+    }
   ]
 }

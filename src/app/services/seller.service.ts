@@ -15,7 +15,7 @@ export class SellerService {
 
   userSignUp(data:signUp){
     return this.http.post('http://localhost:4000/seller',data,{observe:'response'}).subscribe((res)=>{
-      console.log(res)
+
       if(res){
         this.isSellerLoggedIn.next(true)
         localStorage.setItem('seller',JSON.stringify(res.body))
