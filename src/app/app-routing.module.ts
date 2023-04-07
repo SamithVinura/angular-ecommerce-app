@@ -5,11 +5,13 @@ import { SellerAuthComponent } from './components/seller-auth/seller-auth.compon
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { SellerHomeComponent } from './components/seller-home/seller-home.component';
 import { AuthGuard } from './guards/auth.guard';
+import { SellerAddProductComponent } from './components/seller-add-product/seller-add-product.component';
 
 const routes: Routes = [
   {path:'',component:HomeComponent},
   {path:'seller-auth',component:SellerAuthComponent},
   {path:'seller-home',component:SellerHomeComponent,canActivate:[AuthGuard]},
+  {path:'seller-add-product',component:SellerAddProductComponent,canActivate:[AuthGuard]},
   {path:'**',component:PageNotFoundComponent}
 ];
 
