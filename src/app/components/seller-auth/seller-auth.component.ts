@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { SellerService } from '../services/seller.service';
-import { login, signUp } from '../data-type';
+import { SellerService } from '../../services/seller.service';
+import { login, signUp } from '../../models/data-type';
 
 
 @Component({
