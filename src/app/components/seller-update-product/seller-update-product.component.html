@@ -2,7 +2,7 @@
   <h1>Update Product</h1>
   <p class="message-p">{{productMessage}}</p>
   <form #addProduct="ngForm"
-
+  (ngSubmit)="submit(addProduct.value)"
    class="common-form">
     <input
       type="text"
