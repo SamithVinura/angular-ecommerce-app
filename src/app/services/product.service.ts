@@ -21,4 +21,8 @@ export class ProductService {
   deleteProduct(id:number){
     return this.http.delete(`http://localhost:4000/products/${id}`)
   }
+
+  getProduct(id:string){
+    return this.http.get<product>(`http://localhost:4000/products/${id}`)
+  }
 }
