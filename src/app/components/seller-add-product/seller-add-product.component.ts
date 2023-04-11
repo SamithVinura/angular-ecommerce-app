@@ -12,6 +12,8 @@ export class SellerAddProductComponent {
 
   constructor(private productService:ProductService){}
 
+
+
   submit(data:product){
     this.productService.addProduct(data).subscribe((res)=>{
       if(res){

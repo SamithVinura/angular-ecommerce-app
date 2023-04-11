@@ -23,7 +23,7 @@ export class SellerUpdateProductComponent implements OnInit {
     })
   }
 
-  submit(data: any) {
+  submit(data: product) {
     if (this.productData) {
       data.id = this.productData.id;
     }
@@ -34,7 +34,7 @@ export class SellerUpdateProductComponent implements OnInit {
     });
     setTimeout(() => {
       this.productMessage = undefined;
-    }, 3000);
+    }, 1500);
 
   }
 
