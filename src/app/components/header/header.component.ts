@@ -54,4 +54,8 @@ export class HeaderComponent implements OnInit {
     this.searchResult = undefined
   }
 
+  submitSearch(value:string){
+    this.router.navigate([`search/${value}`])
+  }
+
 }
