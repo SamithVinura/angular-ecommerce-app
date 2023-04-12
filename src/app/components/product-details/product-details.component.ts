@@ -10,7 +10,10 @@ import { ProductService } from 'src/app/services/product.service';
 })
 export class ProductDetailsComponent implements OnInit {
 
-  productData:undefined|product
+  productData:undefined | product;
+  productQuantity:number=1;
+  removeCart=false;
+  cartData:product|undefined;
 
   constructor(private activatedRoute:ActivatedRoute,private productService:ProductService) {}
 
@@ -19,7 +22,14 @@ export class ProductDetailsComponent implements OnInit {
     productId && this.productService.getProduct(productId).subscribe((res)=>{
       this.productData = res
     })
+  }
 
+  handleQuantity(value:string){
+    if(this.productQuantity<20 && value==='plus'){
+      this.productQuantity += 1
+    }else if(this.productQuantity>1 && value==='min'){
+      this.productQuantity-=1;
+    }
   }
 
 }
