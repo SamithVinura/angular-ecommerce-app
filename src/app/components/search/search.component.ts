@@ -10,13 +10,16 @@ import { ProductService } from 'src/app/services/product.service';
 })
 export class SearchComponent implements OnInit {
 
+  noSearchItems:boolean=false
   searchResult:undefined|product[]
   constructor(private activeRoute:ActivatedRoute,private productService:ProductService){}
 
   ngOnInit():void{
     let query = this.activeRoute.snapshot.paramMap.get('query');
-    console.warn(query);
     query && this.productService.searchProduct(query).subscribe((result)=>{
+      if(result.length<1){
+        this.noSearchItems = true
+      }
       this.searchResult=result;
     })
   }
