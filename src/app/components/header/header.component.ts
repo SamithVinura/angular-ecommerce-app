@@ -14,10 +14,10 @@ export class HeaderComponent implements OnInit {
   sellerName:string =''
   searchResult:undefined|product[]
 
-  constructor(private router:Router,private productService:ProductService){}
+  constructor(private route:Router,private productService:ProductService){}
 
   ngOnInit():void{
-    this.router.events.subscribe((val:any)=>{
+    this.route.events.subscribe((val:any)=>{
 
       if(val.url){
         if(localStorage.getItem('seller') && val.url.includes('seller')){
@@ -35,7 +35,7 @@ export class HeaderComponent implements OnInit {
 
   logout(){
     localStorage.removeItem('seller')
-    this.router.navigate(['/'])
+    this.route.navigate(['/'])
   }
 
   searchProduct(query:KeyboardEvent){
@@ -55,7 +55,11 @@ export class HeaderComponent implements OnInit {
   }
 
   submitSearch(value:string){
-    this.router.navigate([`search/${value}`])
+    this.route.navigate([`search/${value}`])
+  }
+
+  redirectToDetails(id:number){
+    this.route.navigate(['/details/'+id])
   }
 
 }
