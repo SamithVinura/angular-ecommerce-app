@@ -16,6 +16,7 @@ import { SellerUpdateProductComponent } from './components/seller-update-product
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SearchComponent } from './components/search/search.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { ProductDetailsComponent } from './components/product-details/product-de
     SellerAddProductComponent,
     SellerUpdateProductComponent,
     SearchComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
