@@ -1,5 +1,5 @@
 <div class="user-auth">
-  <div   class="sign-up">
+  <div *ngIf="!showLogin"  class="sign-up">
    <h1>User Signup</h1>
    <form #userSignUp="ngForm" class="common-form" (ngSubmit)="signUp(userSignUp.value)">
      <input
@@ -23,13 +23,13 @@
      ngModel
    />
    <button class="form-button">Sign Up</button>
-   <p>Already have an account ? <a (click)="openLogin()" >Click Here</a></p>
+   <p>Already Have Account ? <a (click)="openLogin()" >Click Here</a></p>
    </form>
   </div>
-  <!-- <div   class="login">
+  <div *ngIf="showLogin"  class="login">
    <h1>User Login</h1>
-   <form #userLogin="ngForm" class="common-form" (ngSubmit)="login(userLogin.value)">
-     <p class="error-p">authError</p>
+   <form #userLogin="ngForm" class="common-form" >
+     <p class="error-p">{{authError}}</p>
      <input
        type="text"
        class="form-input"
@@ -56,5 +56,5 @@
    <button [disabled]="userLogin.invalid" class="form-button">Login</button>
    <p>Want to Create Account ? <a (click)="openSignUp()" >Click Here</a></p>
    </form>
-  </div> -->
+  </div>
  </div>

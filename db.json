@@ -105,6 +105,12 @@
       "email": "dsd",
       "password": "dsds",
       "id": 2
+    },
+    {
+      "name": "samith",
+      "email": "samith@gmail.com",
+      "password": "12345",
+      "id": 3
     }
   ]
 }
