@@ -93,5 +93,18 @@
       "id": 7
     }
   ],
-  "user":[]
+  "user": [
+    {
+      "name": "asa",
+      "email": "sas",
+      "password": "sas",
+      "id": 1
+    },
+    {
+      "name": "dsd",
+      "email": "dsd",
+      "password": "dsds",
+      "id": 2
+    }
+  ]
 }

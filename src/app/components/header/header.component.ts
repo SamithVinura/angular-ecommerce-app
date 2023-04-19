@@ -12,6 +12,7 @@ import { ProductService } from 'src/app/services/product.service';
 export class HeaderComponent implements OnInit {
   menuType:string ='default'
   sellerName:string =''
+  userName:string =''
   searchResult:undefined|product[]
 
   constructor(private route:Router,private productService:ProductService){}
@@ -25,7 +26,13 @@ export class HeaderComponent implements OnInit {
           let sellerData = sellerStore && JSON.parse(sellerStore)[0]
           this.sellerName = sellerData.name
           this.menuType='seller'
-        }else{
+        }else if(localStorage.getItem('user')){
+          let userStore = localStorage.getItem('user')
+          let userData = userStore && JSON.parse(userStore)
+          this.userName = userData.name
+          this.menuType = 'user'
+        }
+        else{
           this.menuType='default'
         }
 
