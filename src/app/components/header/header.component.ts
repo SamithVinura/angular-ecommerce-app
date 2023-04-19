@@ -45,6 +45,11 @@ export class HeaderComponent implements OnInit {
     this.route.navigate(['/'])
   }
 
+  userLogout(){
+    localStorage.removeItem('user')
+    this.route.navigate(['/user-auth'])
+  }
+
   searchProduct(query:KeyboardEvent){
     if(query){
       const element  = query.target as HTMLInputElement
