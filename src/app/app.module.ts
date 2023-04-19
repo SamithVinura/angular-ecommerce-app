@@ -17,6 +17,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SearchComponent } from './components/search/search.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { UserAuthComponent } from './components/user-auth/user-auth.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { FooterComponent } from './components/footer/footer.component';
     SellerUpdateProductComponent,
     SearchComponent,
     ProductDetailsComponent,
-    FooterComponent
+    FooterComponent,
+    UserAuthComponent
   ],
   imports: [
     BrowserModule,

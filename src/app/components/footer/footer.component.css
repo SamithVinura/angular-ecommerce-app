@@ -10,7 +10,6 @@
 }
 .footer ul{
   display: flex;
-
   list-style-type: none;
   gap: 2em;
   justify-content: space-between;
