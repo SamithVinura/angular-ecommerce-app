@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { login, signUp } from 'src/app/models/data-type';
+import { cart, login, product, signUp } from 'src/app/models/data-type';
+import { ProductService } from 'src/app/services/product.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { UserService } from 'src/app/services/user.service';
 export class UserAuthComponent implements OnInit {
   showLogin: boolean = true;
   authError: string = '';
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService,private productService: ProductService) {}
 
   ngOnInit(): void {
     this.userService.userAuthReload();
@@ -37,5 +38,33 @@ export class UserAuthComponent implements OnInit {
         this.authError = ''
       }
     })
+  }
+
+  localCartToRemoteCart(){
+    let data = localStorage.getItem('localCart')
+    if(data){
+      let cartDataList:product[] = JSON.parse(data)
+      let user = localStorage.getItem('user')
+      let userId= user && JSON.parse(user).id
+      cartDataList.forEach((productItem:product,index)=>{
+        let cartData:cart={
+          ...productItem,
+          productId:productItem.id,
+          userId
+        }
+        delete cartData.id
+        setTimeout(()=>{
+          this.productService.addToCart(cartData).subscribe((res)=>{
+            if(res){
+
+            }
+          })
+        },500)
+        if(cartDataList.length === index+1){
+          localStorage.removeItem('localCart')
+        }
+
+      })
+    }
   }
 }
