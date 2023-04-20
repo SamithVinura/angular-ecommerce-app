@@ -21,6 +21,17 @@ export class ProductDetailsComponent implements OnInit {
     let productId= this.activatedRoute.snapshot.paramMap.get('id')
     productId && this.productService.getProduct(productId).subscribe((res)=>{
       this.productData = res
+      let cartData = localStorage.getItem('localCart')
+      if(productId && cartData){
+        let items = JSON.parse(cartData)
+        items = items.filter((item:product)=>productId === item.id.toString())
+        if(items.length){
+          this.removeCart =true
+        }else{
+          this.removeCart =false
+        }
+
+      }
     })
   }
 
@@ -29,6 +40,17 @@ export class ProductDetailsComponent implements OnInit {
       this.productQuantity += 1
     }else if(this.productQuantity>1 && value==='min'){
       this.productQuantity-=1;
+    }
+  }
+
+  addToCart(){
+    if(this.productData){
+      this.productData.quantity = this.productQuantity
+      if(localStorage.getItem('user')){
+        this.productService.localAddToCart(this.productData)
+      }else{
+
+      }
     }
   }
 

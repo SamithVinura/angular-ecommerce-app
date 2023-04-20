@@ -18,7 +18,7 @@ const routes: Routes = [
   {path:'seller-add-product',component:SellerAddProductComponent,canActivate:[AuthGuard]},
   {path:'seller-update-product/:id',component:SellerUpdateProductComponent,canActivate:[AuthGuard]},
   {path:'search/:query',component:SearchComponent,canActivate:[AuthGuard]},
-  {path:'details/:id',component:ProductDetailsComponent,canActivate:[AuthGuard]},
+  {path:'details/:id',component:ProductDetailsComponent},
   {path:'user-auth',component:UserAuthComponent},
   {path:'**',component:PageNotFoundComponent}
 ];
