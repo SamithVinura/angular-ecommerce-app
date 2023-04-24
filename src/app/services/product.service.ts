@@ -83,7 +83,7 @@ export class ProductService {
       });
   }
 
-  /* removeToCart(cartId: number) {
+  removeToCart(cartId: number) {
     return this.http.delete('http://localhost:4000/cart/' + cartId);
-  } */
+  }
 }
