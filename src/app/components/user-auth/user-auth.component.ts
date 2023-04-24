@@ -40,12 +40,13 @@ export class UserAuthComponent implements OnInit {
     })
   }
 
-  localCartToRemoteCart(){
+  /* localCartToRemoteCart(){
     let data = localStorage.getItem('localCart')
+    let user = localStorage.getItem('user')
+    let userId= user && JSON.parse(user).id
     if(data){
       let cartDataList:product[] = JSON.parse(data)
-      let user = localStorage.getItem('user')
-      let userId= user && JSON.parse(user).id
+
       cartDataList.forEach((productItem:product,index)=>{
         let cartData:cart={
           ...productItem,
@@ -66,5 +67,41 @@ export class UserAuthComponent implements OnInit {
 
       })
     }
-  }
+    setTimeout(()=>{
+      this.productService.getCartList(userId)
+    },2000)
+
+  } */
+  localCartToRemoteCart(){
+    let data = localStorage.getItem('localCart');
+    let user = localStorage.getItem('user');
+    let userId= user && JSON.parse(user).id;
+    if(data){
+     let cartDataList:product[]= JSON.parse(data);
+
+     cartDataList.forEach((product:product, index)=>{
+       let cartData:cart={
+         ...product,
+         productId:product.id,
+         userId
+       }
+       delete cartData.id;
+       setTimeout(() => {
+         this.productService.addToCart(cartData).subscribe((result)=>{
+           if(result){
+             console.warn("data is stored in DB");
+           }
+         })
+       }, 500);
+       if(cartDataList.length===index+1){
+         localStorage.removeItem('localCart')
+       }
+     })
+    }
+
+    setTimeout(() => {
+     this.productService.getCartList(userId)
+    }, 2000);
+
+   }
 }
