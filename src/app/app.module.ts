@@ -18,6 +18,7 @@ import { SearchComponent } from './components/search/search.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { UserAuthComponent } from './components/user-auth/user-auth.component';
+import { CartPageComponent } from './components/cart-page/cart-page.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { UserAuthComponent } from './components/user-auth/user-auth.component';
     SearchComponent,
     ProductDetailsComponent,
     FooterComponent,
-    UserAuthComponent
+    UserAuthComponent,
+    CartPageComponent
   ],
   imports: [
     BrowserModule,
