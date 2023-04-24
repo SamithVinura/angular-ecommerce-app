@@ -9,99 +9,66 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./user-auth.component.css'],
 })
 export class UserAuthComponent implements OnInit {
-  showLogin: boolean = true;
-  authError: string = '';
-  constructor(private userService: UserService,private productService: ProductService) {}
+  showLogin:boolean=true
+  authError:string="";
+  constructor(private user: UserService, private productService:ProductService) {}
 
   ngOnInit(): void {
-    this.userService.userAuthReload();
+    this.user.userAuthReload();
   }
 
   signUp(data: signUp) {
-    this.userService.userSignUp(data);
+    this.user.userSignUp(data);
   }
-
-  openSignUp() {
-    this.showLogin = false;
-  }
-  openLogin() {
-    this.showLogin = true;
-  }
-
   login(data: login) {
-    console.log(data)
-    this.userService.userLogin(data)
-    this.userService.invalidUserAuth.subscribe((val)=>{
-      if(val){
-        this.authError = "User not found"
+    this.user.userLogin(data)
+    this.user.invalidUserAuth.subscribe((result)=>{
+      console.warn(result);
+      if(result){
+         this.authError="User not found"
       }else{
-        this.authError = ''
+        this.localCartToRemoteCart();
       }
+
     })
   }
+  openSignUp(){
+    this.showLogin=false
+  }
+  openLogin(){
+this.showLogin=true;
+  }
 
-  /* localCartToRemoteCart(){
-    let data = localStorage.getItem('localCart')
-    let user = localStorage.getItem('user')
-    let userId= user && JSON.parse(user).id
-    if(data){
-      let cartDataList:product[] = JSON.parse(data)
-
-      cartDataList.forEach((productItem:product,index)=>{
-        let cartData:cart={
-          ...productItem,
-          productId:productItem.id,
-          userId
-        }
-        delete cartData.id
-        setTimeout(()=>{
-          this.productService.addToCart(cartData).subscribe((res)=>{
-            if(res){
-
-            }
-          })
-        },500)
-        if(cartDataList.length === index+1){
-          localStorage.removeItem('localCart')
-        }
-
-      })
-    }
-    setTimeout(()=>{
-      this.productService.getCartList(userId)
-    },2000)
-
-  } */
   localCartToRemoteCart(){
-    let data = localStorage.getItem('localCart');
-    let user = localStorage.getItem('user');
-    let userId= user && JSON.parse(user).id;
-    if(data){
-     let cartDataList:product[]= JSON.parse(data);
+   let data = localStorage.getItem('localCart');
+   let user = localStorage.getItem('user');
+   let userId= user && JSON.parse(user).id;
+   if(data){
+    let cartDataList:product[]= JSON.parse(data);
 
-     cartDataList.forEach((product:product, index)=>{
-       let cartData:cart={
-         ...product,
-         productId:product.id,
-         userId
-       }
-       delete cartData.id;
-       setTimeout(() => {
-         this.productService.addToCart(cartData).subscribe((result)=>{
-           if(result){
-             console.warn("data is stored in DB");
-           }
-         })
-       }, 500);
-       if(cartDataList.length===index+1){
-         localStorage.removeItem('localCart')
-       }
-     })
-    }
-
-    setTimeout(() => {
-     this.productService.getCartList(userId)
-    }, 2000);
-
+    cartDataList.forEach((product:product, index)=>{
+      let cartData:cart={
+        ...product,
+        productId:product.id,
+        userId
+      }
+      delete cartData.id;
+      setTimeout(() => {
+        this.productService.addToCart(cartData).subscribe((result)=>{
+          if(result){
+            console.warn("data is stored in DB");
+          }
+        })
+      }, 500);
+      if(cartDataList.length===index+1){
+        localStorage.removeItem('localCart')
+      }
+    })
    }
+
+   setTimeout(() => {
+    this.productService.getCartList(userId)
+   }, 2000);
+
+  }
 }
