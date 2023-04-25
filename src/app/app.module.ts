@@ -20,6 +20,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { UserAuthComponent } from './components/user-auth/user-auth.component';
 import { CartPageComponent } from './components/cart-page/cart-page.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
+import { MyOrdersComponent } from './components/my-orders/my-orders.component';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
     FooterComponent,
     UserAuthComponent,
     CartPageComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    MyOrdersComponent
   ],
   imports: [
     BrowserModule,
