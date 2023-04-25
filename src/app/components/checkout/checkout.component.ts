@@ -18,6 +18,7 @@ export class CheckoutComponent implements OnInit {
   ngOnInit(): void {
     this.productService.currentCart().subscribe((res) => {
       let price = 0;
+      this.cartData = res;
       res.forEach((item) => {
         if (item.quantity) {
           price = price + +item.price * item.quantity;
@@ -38,11 +39,11 @@ export class CheckoutComponent implements OnInit {
         id: undefined
       }
 
-      /* this.cartData?.forEach((item) => {
+      this.cartData?.forEach((item) => {
         setTimeout(() => {
           item.id && this.productService.deleteCartItems(item.id);
-        }, 700)
-      }) */
+        }, 3000)
+      })
 
       this.productService.orderNow(orderData).subscribe((result) => {
         if (result) {

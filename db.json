@@ -101,32 +101,7 @@
       "id": 1
     }
   ],
-  "cart": [
-    {
-      "name": "Nike Shoes",
-      "price": "3000",
-      "category": "Shoes",
-      "color": "Black",
-      "description": "Best shoes for Running",
-      "image": "https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/1eeaacc0-e07c-4024-a5f7-57f2fd23e8a2/air-max-270-g-golf-shoe-Z6vCfs.png",
-      "quantity": 1,
-      "productId": 4,
-      "userId": 1,
-      "id": 2
-    },
-    {
-      "name": "Samsung m 40 A",
-      "price": "550",
-      "category": "mobile",
-      "color": "white",
-      "description": "this is a Samsung product",
-      "image": "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcSOO1JDPUNwcPiqzHYhaL_zpJA0Ymlr6mD9sSgTPad_JYdrk-o",
-      "quantity": 1,
-      "productId": 1,
-      "userId": 1,
-      "id": 3
-    }
-  ],
+  "cart": [],
   "orders": [
     {
       "email": "samithvinurakck119@gmail.com",
@@ -135,6 +110,14 @@
       "totalPrice": 3650,
       "userId": 1,
       "id": 1
+    },
+    {
+      "email": "samithvinurakck119@gmail.com",
+      "address": "101, karamada,gelioya",
+      "contact": "0719591462",
+      "totalPrice": 54200,
+      "userId": 1,
+      "id": 2
     }
   ]
 }

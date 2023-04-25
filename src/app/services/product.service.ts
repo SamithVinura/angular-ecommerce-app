@@ -102,4 +102,10 @@ export class ProductService {
     let userData = userStore && JSON.parse(userStore);
     return this.http.get<order[]>('http://localhost:4000/orders?userId=' + userData.id);
   }
+
+  deleteCartItems(cartId: number) {
+    return this.http.delete('http://localhost:4000/cart/' + cartId).subscribe((result) => {
+      this.cartData.emit([]);
+    })
+  }
 }
