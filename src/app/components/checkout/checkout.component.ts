@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { order } from 'src/app/models/data-type';
 import { ProductService } from 'src/app/services/product.service';
 
 @Component({
@@ -24,5 +25,20 @@ export class CheckoutComponent implements OnInit {
     });
   }
 
-  orderNow(data: any) {}
+  orderNow(data: order) {
+    let user = localStorage.getItem('user')
+    let userId = user && JSON.parse(user).id
+    if(this.totalPrice){
+      let orderData ={
+        ...data,
+        totalPrice:this.totalPrice,
+        userId
+      }
+      this.productService.orderNow(orderData).subscribe((res)=>{
+        if(res){
+
+        }
+      })
+    }
+  }
 }
