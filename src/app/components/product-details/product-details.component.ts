@@ -176,7 +176,7 @@ this.productService.removeItemFromCart(productId)
     if(!localStorage.getItem('user')){
 this.productService.removeItemFromCart(productId)
     }else{
-      console.warn("cartData", this.cartData);
+
 
       this.cartData && this.productService.removeToCart(this.cartData.id)
       .subscribe((result)=>{

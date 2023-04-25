@@ -20,24 +20,38 @@ export class CartPageComponent implements OnInit {
   constructor(private productService: ProductService, private router: Router) { }
 
   ngOnInit(): void {
-   this.productService.currentCart().subscribe((res)=>{
-    this.cartData = res
-    let price=0
-    res.forEach((item)=>{
-      if(item.quantity){price = price+(+item.price*item.quantity)}
+   this.loadDetails()
 
-    })
-    this.priceSummary.price = price
-    this.priceSummary.discount = price/10
-    this.priceSummary.tax =price/10
-    this.priceSummary.delivery=100
-    this.priceSummary.total= price+(price/10)+100-(price/10)
-   })
+   }
 
+   loadDetails(){
+    this.productService.currentCart().subscribe((res)=>{
+      this.cartData = res
+      let price=0
+      res.forEach((item)=>{
+        if(item.quantity){price = price+(+item.price*item.quantity)}
+
+      })
+      this.priceSummary.price = price
+      this.priceSummary.discount = price/10
+      this.priceSummary.tax =price/10
+      this.priceSummary.delivery=100
+      this.priceSummary.total= price+(price/10)+100-(price/10)
+      if(this.cartData.length ===0){
+        this.router.navigate(['/'])
+      }
+     })
    }
 
    checkout(){
     this.router.navigate(['/checkout'])
+   }
+
+   removeToCart(cartId:number|undefined){
+    cartId && this.cartData && this.productService.removeToCart(cartId)
+      .subscribe((result)=>{
+        this.loadDetails()
+      })
    }
 
 }
