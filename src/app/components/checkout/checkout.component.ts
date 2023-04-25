@@ -32,7 +32,8 @@ export class CheckoutComponent implements OnInit {
       let orderData ={
         ...data,
         totalPrice:this.totalPrice,
-        userId
+        userId,
+        id:undefined
       }
       this.productService.orderNow(orderData).subscribe((res)=>{
         if(res){
